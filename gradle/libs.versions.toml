@@ -1,0 +1,34 @@
+[versions]
+agp = "8.6.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+material = "1.12.0"
+activity = "1.9.2"
+constraintlayout = "2.1.4"
+gson = "2.11.0"
+okhttp = "5.0.0-alpha.14"
+workRuntime = "2.9.1"
+supportV4 = "28.0.0"
+localbroadcastmanager = "1.1.0"
+eventbus = "3.3.1"
+
+[libraries]
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+work-runtime = { group = "androidx.work", name = "work-runtime", version.ref = "workRuntime" }
+support-v4 = { group = "com.android.support", name = "support-v4", version.ref = "supportV4" }
+localbroadcastmanager = { group = "androidx.localbroadcastmanager", name = "localbroadcastmanager", version.ref = "localbroadcastmanager" }
+eventbus = { group = "org.greenrobot", name = "eventbus", version.ref = "eventbus" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+
