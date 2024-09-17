@@ -33,6 +33,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+<<<<<<< HEAD
+=======
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+>>>>>>> origin/master
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -75,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
             String data = new Gson().toJson(config);
             Functions.PutFile(context, DATAFILE, data);
         }
+<<<<<<< HEAD
+=======
+        shareData.config = config;
+>>>>>>> origin/master
         List<Classes.Post> Posts = config.Posts;
         for (int i = 0; i < Posts.size(); i++) {
             Classes.Post item = Posts.get(i);
@@ -118,17 +126,40 @@ public class MainActivity extends AppCompatActivity {
         scheduler.schedule(jobInfo);
     };
 
+<<<<<<< HEAD
+=======
+    private static final int ACTION_HOME = 1;
+    private static final int ACTION_ABOUT = 2;
+
+    private int getActionFromItemId(int itemId) {
+        if (itemId == R.id.navigation_item1) return ACTION_HOME;
+        else if (itemId == R.id.navigation_item2) return ACTION_ABOUT;
+        return 0;
+    }
+
+>>>>>>> origin/master
     @Override
     protected void onNewIntent(@NonNull Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
         String param = intent.getStringExtra("id");
+<<<<<<< HEAD
         int id = Integer.parseInt(Objects.requireNonNull(param));
         Counts.compute(id, (k, count) -> new Classes.Count(count != null ? count.ReplyCount : 0, 0));
         if (Boolean.TRUE.equals(published.get(id)))
             notificationManager.cancel(id);
         TextView newReplyTextView = findViewById(Objects.requireNonNull(Ids.get(id)).second);
         runOnUiThread(() -> newReplyTextView.setText("0"));
+=======
+        if (param != null) {
+            int id = Integer.parseInt(param);
+            Counts.compute(id, (k, count) -> new Classes.Count(count != null ? count.ReplyCount : 0, 0));
+            if (Boolean.TRUE.equals(published.get(id)))
+                notificationManager.cancel(id);
+            TextView newReplyTextView = findViewById(Objects.requireNonNull(Ids.get(id)).second);
+            runOnUiThread(() -> newReplyTextView.setText("0"));
+        }
+>>>>>>> origin/master
     }
 
     @Override
@@ -155,12 +186,30 @@ public class MainActivity extends AppCompatActivity {
                 requestNotificationPermission();
             }
         }
+<<<<<<< HEAD
+=======
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            int action = getActionFromItemId(item.getItemId());
+            switch (action) {
+                case ACTION_HOME:
+                    return true;
+                case ACTION_ABOUT:
+                    Intent aboutIntent = new Intent(this, AboutActivity.class);
+                    startActivity(aboutIntent);
+                    return false;
+                default:
+                    return false;
+            }
+        });
+>>>>>>> origin/master
         EventBus.getDefault().register(this);
         thread = new Thread(task);
         thread.start();
     }
 
     private static final int REQUEST_CODE_NOTIFICATIONS = 1;
+<<<<<<< HEAD
     @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     private void requestNotificationPermission() {
         Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
@@ -168,6 +217,18 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(Settings.EXTRA_CHANNEL_ID, "your_notification_channel_id");
         startActivityForResult(intent, REQUEST_CODE_NOTIFICATIONS);
     }
+=======
+
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
+    private void requestNotificationPermission() {
+        hint("请开启通知权限和弹出通知权限（可选）");
+        Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+        intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+        intent.putExtra(Settings.EXTRA_CHANNEL_ID, "my_channel_id");
+        startActivityForResult(intent, REQUEST_CODE_NOTIFICATIONS);
+    }
+
+>>>>>>> origin/master
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -211,7 +272,11 @@ public class MainActivity extends AppCompatActivity {
                 .setAutoCancel(true)
                 .setWhen(System.currentTimeMillis())
                 .setDefaults(Notification.DEFAULT_ALL)
+<<<<<<< HEAD
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
+=======
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+>>>>>>> origin/master
                 .setContentIntent(resultPendingIntent)
                 .build();
         notificationManager.notify(id, notification);
@@ -308,7 +373,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setTitle("养鸽器");
         toolbar.setTitleTextColor(Color.WHITE);
+<<<<<<< HEAD
         toolbar.setSubtitleTextColor(Color.WHITE);
+=======
+>>>>>>> origin/master
     }
 
     @Override
@@ -329,6 +397,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(editIntent, 337845818);
                 break;
             case 1:
+<<<<<<< HEAD
+=======
+                if (thread.isAlive())
+                    thread.interrupt();
+                saveCount();
+                Intent settingIntent = new Intent(this, SettingsActivity.class);
+                startActivityForResult(settingIntent, 337845818);
+>>>>>>> origin/master
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -358,6 +434,10 @@ public class MainActivity extends AppCompatActivity {
             post.ReplyCount = tmp != null ? tmp.ReplyCount : 0;
             post.NewCount = tmp != null ? tmp.NewCount : 0;
         }
+<<<<<<< HEAD
+=======
+        shareData.config = config;
+>>>>>>> origin/master
         String contentData = new Gson().toJson(config);
         Functions.PutFile(context, "data.json", contentData);
     }

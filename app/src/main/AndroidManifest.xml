@@ -7,6 +7,10 @@
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+<<<<<<< HEAD
+=======
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+>>>>>>> origin/master
 
     <application
         android:allowBackup="true"
@@ -24,7 +28,11 @@
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <activity
             android:name=".MainActivity"
+<<<<<<< HEAD
             android:launchMode="singleInstance"
+=======
+            android:launchMode="singleTask"
+>>>>>>> origin/master
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +46,23 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
+=======
+        <activity
+            android:name=".AboutActivity"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+>>>>>>> origin/master
     </application>
 
 </manifest>
