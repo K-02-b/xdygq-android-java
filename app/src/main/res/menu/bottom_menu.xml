@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_item1"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/navigation_item2"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/about" />
+</menu>
